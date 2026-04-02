@@ -1,0 +1,11 @@
+build/
+*.o
+*.a
+*.so
+chess_bot
+chess_test
+*.gcno
+*.gcda
+*.gcov
+coverage.info
+coverage_html/
