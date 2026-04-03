@@ -1,7 +1,7 @@
 #ifndef FUTILITY_H
 #define FUTILITY_H
 
-#include "types.h"
+#include "../types.h"
 
 #define FUTILITY_BASE_MARGIN 125
 #define FUTILITY_DEPTH_MARGIN 85

@@ -1,7 +1,7 @@
 #ifndef LMP_H
 #define LMP_H
 
-#include "types.h"
+#include "../types.h"
 
 #define LMP_BASE_MOVES 2
 #define LMP_MAX_DEPTH 64

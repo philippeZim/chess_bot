@@ -26,7 +26,8 @@ enum {
 enum {
     ColorWhite,
     ColorBlack,
-    ColorNB
+    ColorNB,
+    COLOR_NB = ColorNB
 };
 
 enum {
@@ -78,7 +79,8 @@ enum {
     MAX_MOVES_PER_POSITION = 256,
     MAX_PLY = 128,
     MAX_POSITIONS = 1024,
-    BOARD_SIZE = 64
+    BOARD_SIZE = 64,
+    MAX_DEPTH = 64
 };
 
 #define SCORE_DRAW 0

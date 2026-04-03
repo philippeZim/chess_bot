@@ -1,4 +1,5 @@
 #include "progressive.h"
+#include "../move/move.h"
 
 void progressive_init(ProgressiveSearch* ps, int maxDepth) {
     ps->bestMove = MOVE_NONE;
@@ -9,14 +10,15 @@ void progressive_init(ProgressiveSearch* ps, int maxDepth) {
 }
 
 int progressive_search(ProgressiveSearch* ps, Board* board, int maxDepth) {
+    (void)board;
     ps->maxDepth = maxDepth;
     ps->currentDepth = 0;
     ps->stopReason = STOP_NONE;
-    
+
     while (ps->currentDepth < ps->maxDepth && ps->stopReason == STOP_NONE) {
         ps->currentDepth++;
     }
-    
+
     return ps->bestScore;
 }
 
@@ -33,6 +35,7 @@ bool progressive_should_stop(ProgressiveSearch* ps, int depth) {
 }
 
 int progressive_aspiration_window(int score) {
+    (void)score;
     return PROGRESSIVE_ASPRATION_WINDOW;
 }
 

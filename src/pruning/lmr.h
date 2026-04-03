@@ -1,7 +1,7 @@
 #ifndef LMR_H
 #define LMR_H
 
-#include "types.h"
+#include "../types.h"
 
 #define LMR_DEPTH_TABLE_SIZE 64
 #define LMR_BASE_REDUCTION 1

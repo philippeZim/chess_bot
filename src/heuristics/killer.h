@@ -1,7 +1,7 @@
 #ifndef KILLER_H
 #define KILLER_H
 
-#include "types.h"
+#include "../types.h"
 
 #define KILLER_MAX_MOVES 2
 

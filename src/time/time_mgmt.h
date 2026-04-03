@@ -1,8 +1,8 @@
 #ifndef TIME_MGMT_H
 #define TIME_MGMT_H
 
-#include "types.h"
-#include "board/board.h"
+#include "../types.h"
+#include "../board/board.h"
 
 #define TIME_DEFAULT_MOVES_TO_GO 40
 #define TIME_MAX_TIME_FRACTION 75

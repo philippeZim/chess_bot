@@ -1,5 +1,5 @@
 #include "null_move.h"
-#include "evaluation/evaluate.h"
+#include "../evaluation/evaluate.h"
 
 void null_move_init(NullMoveConfig* nm) {
     nm->nullDepthReduction = NULL_DEPTH_REDUCTION;
@@ -19,6 +19,7 @@ int null_move_reduction(NullMoveConfig* nm, int depth) {
 }
 
 int null_move_verify(NullMoveConfig* nm, int depth, int beta) {
+    (void)beta;
     int verifyDepth = depth - null_move_reduction(nm, depth);
     return verifyDepth < 1 ? 1 : verifyDepth;
 }

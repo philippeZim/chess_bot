@@ -1,8 +1,8 @@
 #ifndef PROGRESSIVE_H
 #define PROGRESSIVE_H
 
-#include "types.h"
-#include "board/board.h"
+#include "../types.h"
+#include "../board/board.h"
 
 #define PROGRESSIVE_ASPRATION_WINDOW 10
 #define PROGRESSIVE_ASPRATION_EXPANSION 20

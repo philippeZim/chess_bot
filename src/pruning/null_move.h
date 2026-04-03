@@ -1,8 +1,8 @@
 #ifndef NULL_MOVE_H
 #define NULL_MOVE_H
 
-#include "types.h"
-#include "board/board.h"
+#include "../types.h"
+#include "../board/board.h"
 
 #define NULL_DEPTH_REDUCTION 3
 #define NULL_MIN_DEPTH 2

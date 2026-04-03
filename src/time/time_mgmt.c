@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 199309L
 #include "time_mgmt.h"
 #include <time.h>
 #include <string.h>
@@ -17,11 +18,11 @@ void time_mgmt_allocate(TimeManagement* tm, Board* board, uint64_t totalTime) {
     (void)board;
     uint64_t increment = tm->tc.increments;
     int movesToGo = tm->tc.movesToGo > 0 ? tm->tc.movesToGo : TIME_DEFAULT_MOVES_TO_GO;
-    
+
     uint64_t timeBase = totalTime / movesToGo;
     uint64_t optimal = (timeBase * TIME_OPTIMAL_TIME_FRACTION) / 100 + increment;
     uint64_t max = (timeBase * TIME_MAX_TIME_FRACTION) / 100 + increment * 2;
-    
+
     tm->tc.optimalTime = optimal < totalTime ? optimal : totalTime / 4;
     tm->tc.maxTime = max < totalTime ? max : totalTime / 2;
     tm->tc.startTime = get_current_time_ms();
@@ -52,6 +53,7 @@ bool time_mgmt_should_stop(TimeManagement* tm, int depth, int score) {
 
 int time_mgmt_scale(int depth, int movesToGo) {
     int scale = 100;
+    (void)depth;
     if (movesToGo > 0) {
         scale = 100 + (40 - movesToGo) * 2;
         if (scale < 50) scale = 50;
