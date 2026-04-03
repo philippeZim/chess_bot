@@ -143,6 +143,32 @@ test/unit/
 - No push with failing tests
 - Feature branches for new functionality
 
+## Playing Against the Bot
+
+The bot uses the UCI protocol. You can play against it using:
+
+### Command Line
+```bash
+./chess_bot
+```
+
+Then type UCI commands:
+```
+uci                    # Initialize
+isready               # Ready to play
+position startpos     # Start position
+go depth 6            # Search to depth 6
+```
+
+Or with a game:
+```
+position startpos moves e2e4 e7e5   # After 1.e4 e5
+go depth 8
+```
+
+### Chess GUIs
+Connect to localhost with any UCI-compatible chess GUI (Arena, Banksia, etc.)
+
 ## Key Implementation Notes
 
 ### Knight Attacks
