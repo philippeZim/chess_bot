@@ -104,7 +104,7 @@ int run_bitboard_tests(void) {
     /* Test 9: bishop_attacks */
     {
         Bitboard a1_attacks = bishop_attacks(SQUARE_A1, 0ULL);
-        if (bitboard_popcount(a1_attacks) == 13) {
+        if (bitboard_popcount(a1_attacks) == 7) {
             printf("  test_bishop_attacks_empty... PASS\n"); passed++;
         } else {
             printf("  test_bishop_attacks_empty... FAIL (corner bishop has %d attacks)\n", bitboard_popcount(a1_attacks)); failed++;

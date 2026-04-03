@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include "../src/types.h"
 #include "../src/board/board.h"
 #include "../src/board/bitboard.h"
 
-int run_bitboard_tests(void);
-
-static int run_board_tests(void) {
+int run_board_tests(void) {
     int passed = 0, failed = 0;
     Board board;
     char fen[256];
@@ -99,12 +98,12 @@ static int run_board_tests(void) {
     /* Test 9: board_piece_counts */
     {
         if (board_init(&board) &&
-            bitboard_popcount(board.byType[PAWN]) == 8 &&
-            bitboard_popcount(board.byType[KNIGHT]) == 2 &&
-            bitboard_popcount(board.byType[BISHOP]) == 2 &&
-            bitboard_popcount(board.byType[ROOK]) == 2 &&
-            bitboard_popcount(board.byType[QUEEN]) == 1 &&
-            bitboard_popcount(board.byType[KING]) == 1) {
+            bitboard_popcount(board.byType[PAWN]) == 16 &&
+            bitboard_popcount(board.byType[KNIGHT]) == 4 &&
+            bitboard_popcount(board.byType[BISHOP]) == 4 &&
+            bitboard_popcount(board.byType[ROOK]) == 4 &&
+            bitboard_popcount(board.byType[QUEEN]) == 2 &&
+            bitboard_popcount(board.byType[KING]) == 2) {
             printf("  test_board_piece_counts... PASS\n"); passed++;
         } else {
             printf("  test_board_piece_counts... FAIL\n"); failed++;
@@ -134,24 +133,4 @@ static int run_board_tests(void) {
     
     printf("\nBoard: %d/%d passed\n", passed, passed + failed);
     return failed;
-}
-
-int main(void) {
-    printf("Chess Bot Test Suite\n");
-    printf("====================\n\n");
-    
-    printf("Bitboard Tests\n");
-    printf("--------------\n");
-    int bitboard_failures = run_bitboard_tests();
-    printf("\n");
-    
-    printf("Board Tests\n");
-    printf("-----------\n");
-    int board_failures = run_board_tests();
-    
-    printf("\n====================\n");
-    printf("Test run complete!\n");
-    printf("====================\n");
-    
-    return bitboard_failures + board_failures > 0 ? 1 : 0;
 }

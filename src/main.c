@@ -1,6 +1,6 @@
-#include <stdio.h>
+#include "uci/uci.h"
 
 int main(void) {
-    printf("Chess Bot v0.1.0\n");
+    uci_loop();
     return 0;
 }

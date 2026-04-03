@@ -56,30 +56,42 @@ Bitboard bitboard_lsb(Bitboard bb) {
 }
 
 Bitboard square_attacks_knight(Square square) {
-    Bitboard bb = 1ULL << square;
+    int r = square_rank(square);
+    int f = square_file(square);
     Bitboard attacks = 0;
-    attacks |= (bb >> 17) & ~BB_A_FILE;
-    attacks |= (bb >> 15) & ~BB_H_FILE;
-    attacks |= (bb >> 10) & ~(BB_A_FILE | BB_B_FILE);
-    attacks |= (bb >> 6) & ~(BB_G_FILE | BB_H_FILE);
-    attacks |= (bb << 17) & ~BB_H_FILE;
-    attacks |= (bb << 15) & ~BB_A_FILE;
-    attacks |= (bb << 10) & ~(BB_G_FILE | BB_H_FILE);
-    attacks |= (bb << 6) & ~(BB_A_FILE | BB_B_FILE);
+    
+    /* All 8 possible knight moves */
+    int dr[] = {-2, -2, -1, -1, 1, 1, 2, 2};
+    int df[] = {-1, 1, -2, 2, -2, 2, -1, 1};
+    
+    for (int i = 0; i < 8; i++) {
+        int nr = r + dr[i];
+        int nf = f + df[i];
+        if (nr >= 0 && nr < 8 && nf >= 0 && nf < 8) {
+            attacks |= (1ULL << make_square(nf, nr));
+        }
+    }
+    
     return attacks;
 }
 
 Bitboard square_attacks_king(Square square) {
-    Bitboard bb = 1ULL << square;
+    int r = square_rank(square);
+    int f = square_file(square);
     Bitboard attacks = 0;
-    attacks |= (bb >> 8);
-    attacks |= (bb << 8);
-    attacks |= (bb >> 1) & ~BB_A_FILE;
-    attacks |= (bb << 1) & ~BB_H_FILE;
-    attacks |= (bb >> 9) & ~BB_A_FILE;
-    attacks |= (bb >> 7) & ~BB_H_FILE;
-    attacks |= (bb << 7) & ~BB_A_FILE;
-    attacks |= (bb << 9) & ~BB_H_FILE;
+    
+    /* All 8 possible king moves */
+    int dr[] = {-1, -1, -1, 0, 0, 1, 1, 1};
+    int df[] = {-1, 0, 1, -1, 1, -1, 0, 1};
+    
+    for (int i = 0; i < 8; i++) {
+        int nr = r + dr[i];
+        int nf = f + df[i];
+        if (nr >= 0 && nr < 8 && nf >= 0 && nf < 8) {
+            attacks |= (1ULL << make_square(nf, nr));
+        }
+    }
+    
     return attacks;
 }
 

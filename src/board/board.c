@@ -85,8 +85,10 @@ bool board_set_fen(Board* board, const char* fen) {
     
     while (*p && isspace(*p)) p++;
     board->enPassant = SQUARE_NB;
-    if (*p != '-' && isalpha(*p) && p[1] >= '1' && p[1] <= '8') {
-        board->enPassant = string_to_square(p);
+    if (isalpha(*p) && isdigit(p[1])) {
+        int file = *p - 'a';
+        int rank = p[1] - '1';
+        board->enPassant = make_square(file, rank);
         p += 2;
     }
     
